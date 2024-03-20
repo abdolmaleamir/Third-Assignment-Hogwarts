@@ -1,141 +1,214 @@
-# Third Assignment: Hogwarts School Management System 🧙‍♂️
+The project is a simulation of a Hogwarts school management system, where users 
+can manage teachers, students, and courses. The system is implemented using Java classes and methods, and it uses object-oriented programming principles to organize the code.
 
-Welcome to your third Advanced Programming (AP) assignment, where you'll embark on the magical journey of building the Hogwarts School Management System. This project aims to streamline administrative tasks at Hogwarts School of Witchcraft and Wizardry, offering a comprehensive platform for managing teachers, students, and courses within the esteemed institution.
+The main class is Main, which contains the main method that starts the program. The Main class creates instances of the Hogwarts and Assistant classes, and then displays a main menu to the user. The user can choose to manage teachers, students, or courses, or they can exit the program.
 
-## Prerequisites ✅
+The Hogwarts class represents the Hogwarts school and contains lists of teachers, students, and courses. The Hogwarts class provides methods to add and remove teachers, students, and courses, and to view the lists of teachers, students, and courses.
 
-Before diving into the enchanting world of Hogwarts, ensure you have the following prerequisites installed on your magical workstation:
+The Assistant class represents the assistant who manages the Hogwarts school. The Assistant class contains lists of teachers and students who have requested to join the school. The Assistant class provides methods to handle teacher and student requests, and to view the lists of teacher and student requests.
 
-- Java 21
-- Git
-- Gradle as a package manager
+The Teacher and Student classes represent teachers and students, respectively. The Teacher and Student classes contain fields for the teacher or student's name, password, and other relevant information. The Teacher and Student classes provide methods to change the teacher or student's name and password, and to view the teacher or student's profile.
 
-## Objectives ✏️
 
-By completing this assignment, you will:
 
-- Reinforce your understanding of Object-Oriented Programming (OOP) principles and apply them effectively (It is highly recommended to read 'Different patterns to design your classes' in the Resource section).
-- Gain familiarity with concepts such as encapsulation, inheritance, and polymorphism.
-- Hone your skills in designing robust and scalable classes.
-- Learn to manage and track changes in your project using Git.
 
-## Tasks 📝
 
-1. Fork this repository and clone it to your local machine.
-2. Create a new branch named `develop` and switch to it. All development should be done in this branch.
-3. **Complete or create** the following classes, ensuring they meet the specified requirements outlined in the "Designing the Classes" section.
-4. Implement an interactive menu in the command line's `runMenu()` function of the Main class, enabling users to utilize the program's functionalities seamlessly.
-5. Write a comprehensive report in Markdown format, detailing the tasks you've completed and any challenges encountered. Include UML diagrams of the classes you've developed. For example, a UML diagram for account class is as follows:
 
-	<img src="./Account.png" alt="Image" width="200" height="150">
+Student Class Overview
 
-6. Commit your changes and push them to your GitHub repository.
-7. Submit a pull request from your `develop` branch to your `main` branch. Your mentor will review the pull request and merge it upon approval.
+The Student class extends the Account class and includes the following fields:
 
-## Designing the Classes 💡
+courses: an ArrayList of Strings representing the student's course names.
+username: a String representing the student's username.
+score: a double representing the student's score.
+password: a String representing the student's encrypted password.
+group: a String representing the student's Hogwarts group.
+Constructors
 
-In this section, the functionalities of each user type are explained. Your task is to design the classes to ensure the program possesses the specified functionality. **Ensure that classes are designed with proper encapsulation**, where internal state is hidden and accessed only through well-defined methods. One way to do it is to define getter and setter methods.
+The Student class has one constructor that initializes the username, password, group, and score fields. However, the courses field is not initialized in the constructor.
 
-### Teacher class:
+Methods
 
-Teachers should be able to manage courses, score students, and access valuable information to enhance their teaching experience on the platform.
+changeUsername(String newUsername): Overrides the changeUsername method from the Account class to update the username field.
+changePassword(String newPassword): Overrides the changePassword method from the Account class to update the password field.
+toString(): Overrides the toString method to provide a String representation of the Student object.
+showProfile(): Displays the student's profile information, including their username, score, courses, and Hogwarts group.
+getCourses(): Returns the courses ArrayList.
+validatePassword(String enteredPassword): Validates the entered password against the stored encrypted password.
 
-- **Sign Up**: Teachers can sign up by following these steps:
-  - Request an account by contacting the assistant.
-  - Upon receiving access, provide necessary information to complete the sign-up process.
-- **Take Courses**: Teachers can explore and enroll in courses they wish to teach, displayed on their dashboard.
-- **Score Students**: Teachers can evaluate students by navigating to the scoring section on their dashboard, selecting the appropriate course, and entering scores for each student.
-- **View Courses List**: Access a comprehensive list of courses they teach for an overview of current teaching assignments.
-- **View Course's List of Students**: Check the list of students enrolled in specific courses to monitor their progress.
-- **Show Teacher’s Score on the Menu**: Conveniently monitor their teaching performance by checking their score displayed on the menu.
 
-### Assistant class:
 
-The assistant serves as an administrative tool, allowing administrators to create accounts, manage users, courses, and perform various administrative tasks to ensure smooth operation of the platform.
 
-- **Sign Up**: Only administrators (other assistants) can create new assistant accounts. Follow these steps to create a new assistant account:
-  1. Access the admin panel.
-  2. Utilize the provided tools to create a new assistant account.
-- **Login**: Admins can log in to their assistant accounts using their credentials.
-- **Remove a Teacher/Student**: Assistants possess the authority to remove teachers or students from the platform:
-  1. Navigate to the management section in the dashboard.
-  2. Select the option to remove a teacher or student.
-  3. Confirm the action to remove the selected user.
-- **View Courses and Their List of Students**: Explore the list of courses available on the platform and view enrolled students for each course.
-- **Check Student/Teacher Profile**: Access detailed profiles for both students and teachers for administrative purposes.
-- **Create a Course**: Follow steps to create a new course on the platform:
-  1. Navigate to the course creation section in the dashboard.
-  2. Provide necessary details for the new course.
-  3. Confirm and save the course.
 
-### Student class:
+Teacher Class Overview
 
-Students can perform various actions within the Hogwarts School Management System, including taking courses, viewing teachers, and participating in sorting quizzes.
+The Teacher class extends the Account class and includes the following fields:
 
-- **Taking Courses**: Enroll in courses by taking them.
-- **Viewing All Courses Taken**: View a list of all courses taken.
-- **Viewing All Teachers**: Access a list of all teachers taken courses with.
-- **Taking a Sorting Quiz**: Take a quiz to determine their Hogwarts House (Gryffindor, Hufflepuff, Ravenclaw, or Slytherin).
+lumos: an int representing the teacher's number of votes.
+course: a String representing the teacher's course name.
+score: a double representing the teacher's score.
+username: a String representing the teacher's username.
+password: a String representing the teacher's encrypted password.
+Constructors
 
-### Hogwarts class:
+The Teacher class has one constructor that initializes the username, password, score, and course fields.
 
-Serving as a central management system for Hogwarts School of Witchcraft and Wizardry, the Hogwarts class facilitates various actions for teachers, students, and administrators.
+Methods
 
-- Managing lists of teachers, courses, admins, and students from different Houses.
-- Rating teachers and leaving comments for them.
-- Viewing all teachers, students, and courses.
-- Viewing individual student profiles.
-- Requesting courses and submitting scores for students.
-- Requesting courses as a teacher.
-- Rating teachers and leaving comments for them as a student.
-- Retrieving course information via UUID.
+changePassword(String newPassword): Overrides the changePassword method from the Account class to update the password field.
+toString(): Overrides the toString method to provide a String representation of the Teacher object.
+validatePassword(String enteredPassword): Validates the entered password against the stored encrypted password.
+setVote(int lumos): Sets the teacher's number of votes.
+getVote(): Returns the teacher's number of votes.
+showProfile(): Displays the teacher's profile information, including their username, score, course, and number of votes
 
-### Course class:
 
-Representing specific courses offered at Hogwarts School of Witchcraft and Wizardry, the Course class is capable of setting course information.
 
-- **Setting Course Information**:
-  - Store the title of the course.
-  - Assign a unique identifier to each course (courseID), represented by a UUID.
-  - Maintain a list of students enrolled in the course (students).
-  - Track the teacher assigned to teach the course (teacher).
 
-## Evaluation 📃
 
-Your submission will be evaluated based on the following criteria:
 
-- Error-free compilation and execution of your code.
-- Efficient usage of OOP concepts such as polymorphism, encapsulation, and inheritance.
-- Proper implementation of Java access modifiers and adherence to OOP principles.
-- Well-written report detailing the tasks completed, including UML diagrams of the designed classes.
-- Clear code structure, readability, thorough commenting, and adherence to clean code principles.
+Account Class Overview
 
-**Note: Usage of ChatGPT or any other AI generative model to complete any part of this assignment is strictly prohibited. Violation will result in a score of 0 without warnings.**
+The Account class includes the following fields:
 
-## Bonus Objectives ✒️
+accountID: a UUID representing the account's unique identifier.
+username: a String representing the account's username.
+password: a String representing the account's encrypted password.
+The Student and Teacher classes extend the Account class and include additional fields specific to their respective roles.
 
-As an additional challenge, consider implementing the following bonus objectives:
+Constructors
 
-- **Sort Course's List of Students**: Allow sorting of the list of students within a course based on specific criteria.
-- **View Weekly Schedule**: Implement functionality for students to view their weekly schedule (optional).
-- **Utilize Abstract Classes and Interfaces**: Explore the usage of abstract classes and interfaces in your Java implementation to achieve better code structure and design.
-- Enhance your classes by incorporating additional attributes and methods to enrich their functionality and expand their capabilities.
-- Provide a simple GUI (Graphical User Interface) for your project. The recommended library to do so is Javafx. JavaFX empowers developers to create dynamic and engaging user interfaces for their Java applications, offering a modern and versatile platform for building cross-platform desktop, web, and mobile applications. In the event that you encounter any difficulties adding JavaFX to your project, you have the option to create a separate repository and develop your project there.
+The Account class has a default constructor that initializes the accountID field with a new UUID.
 
-## Submission ⌛
+The Student and Teacher classes have constructors that initialize the username, password, score, course, lumos, and courses fields.
 
-The deadline for submitting your code is Tuesday, March 19 (29th of Esfand).
+Methods
 
-## Resources 📚
+changeUsername(String newUsername): Updates the username field.
+changePassword(String newPassword): Updates the password field.
+validatePassword(String enteredPassword): Validates the entered password against the stored encrypted password.
 
-For assistance with this assignment, you may refer to the following resources:
 
-🔗 [Different patterns to design your classes](https://refactoring.guru/design-patterns/catalog)
 
-🔗 [Visual Paradigm for drawing UML diagrams](https://www.visual-paradigm.com/)
 
-🔗 [Types of UML Diagrams](https://www.lucidchart.com/blog/types-of-UML-diagrams)
 
-🔗 [Guide to UUID in Java](https://www.baeldung.com/java-uuid)
+Hogwarts Class Overview
 
-Additionally, you may explore online tutorials, forums, and documentation for further guidance on
+The Hogwarts class includes the following fields:
+
+studentsList: an ArrayList of Strings representing the students' information.
+coursesList: an ArrayList of Strings representing the courses' names.
+teachersList: an ArrayList of Strings representing the teachers' information.
+Constructors
+
+The Hogwarts class has a default constructor that initializes the studentsList, coursesList, and teachersList fields as empty ArrayLists.
+
+Methods
+
+viewAllTeachers(): Displays the list of teachers' information.
+viewAllStudents(): Displays the list of students' information.
+teacherAppend(String enteredTeacher): Adds a teacher's information to the teachersList field.
+studentsAppend(String enteredStudent): Adds a student's information to the studentsList field.
+defaultCourses(): Adds the default courses to the coursesList field.
+viewAllCourses(): Displays the list of courses
+
+
+
+
+
+
+Assistant Class Overview
+
+The Assistant class extends the Hogwarts class and includes the following fields:
+
+wantingteachers: an ArrayList of Strings representing the teachers' requests.
+wantingstudents: an ArrayList of Strings representing the students' requests.
+username: a String representing the assistant's username.
+password: a String representing the assistant's encrypted password.
+Constructors
+
+The Assistant class has a default constructor that initializes the wantingteachers and wantingstudents fields as empty ArrayLists, and sets the username and password fields to "harrypotter" and "76856734", respectively.
+
+Methods
+
+viewAllTeachers(): Displays the list of teachers' information.
+viewAllStudents(): Displays the list of students' information.
+viewAllCourses(): Displays the list of courses.
+teacherAppend(String enteredTeacher): Adds a teacher's information to the teachersList field.
+studentsAppend(String enteredStudent): Adds a student's information to the studentsList field.
+adjustCourseList(): Allows the user to add or remove courses from the coursesList field.
+adjustTeachersList(): Allows the user to remove teachers from the teachersList field.
+adjustStudentList(): Allows the user to remove students from the studentsList field.
+showRequestTeacher(): Displays the list of teachers' requests.
+showRequestStudent(): Displays the list of students' requests.
+validatePassword(String enteredPassword): Validates the entered password against the stored encrypted password.
+validateUsername(String enteredUsername): Validates the enteredusername against the stored username.
+
+
+
++-----------------+
+|       Main       |
++-----------------+
+| - assistant: Assistant |
+| - hogwarts: Hogwarts |
+| + runMenu()         |
++-----------------+
+
++-----------------+
+|     Assistant   |
++-----------------+
+| - lumos: int     |
+| - password: str  |
+| - course: str    |
+| - score: double  |
+| - username: str  |
+| + viewAllTeachers()|
+| + viewAllStudents()|
+| + viewAllCourses()|
+| + teacherAppend(str) |
+| + studentsAppend(str)|
+| + defaultCourses()  |
++-----------------+
+
++-----------------+
+|      Hogwarts   |
++-----------------+
+| - studentsList: ArrayList<str> |
+| - coursesList: ArrayList<str>   |
+| - teachersList: ArrayList<str>  |
+| + viewAllTeachers()|
+| + viewAllStudents()|
+| + viewAllCourses()|
+| + teacherAppend(str) |
+| + studentsAppend(str)|
++-----------------+
+
++-----------------+
+|     Teacher     |
++-----------------+
+| - password: str  |
+| - course: str    |
+| - score: double  |
+| - username: str  |
+| + changeUsername(str newUsername) |
+| + changePassword(str newPassword) |
+| + toString()     |
+| + showProfile()  |
+| + getCourses()   |
+| + validatePassword(str enteredPassword) |
++-----------------+
+
++-----------------+
+|    Student     |
++-----------------+
+| - password: str  |
+| - course: ArrayList<str> |
+| - group: str    |
+| - score: double  |
+| - username: str  |
+| + changeUsername(str newUsername) |
+| + changePassword(str newPassword) |
+| + toString()     |
+| + showProfile()  |
+| + getCourses()   |
+| + validatePassword
